@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Kryesore - Pizza Shkupi</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #d61c1c; 
+            --accent-color: #f77f00; 
+            --main-theme-color: #3e2723; 
+            --wood-dark: #2b1b17;
+            --text-light: #ffffff;
+            --card-bg: #4e342e;
+            --call-green: #28a745;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--main-theme-color);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* HEADER I NJEJTË SI TE PICAT */
+        .header {
+            position: sticky;
+            top: 0;
+            background: rgba(30, 20, 18, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 10px 8px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 8px;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .btn-top {
+            flex: 1;
+            padding: 10px 5px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 700;
+            color: white;
+            transition: 0.3s;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+        }
+
+        .btn-call { background: var(--call-green); }
+        .btn-fb { background: #1877f2; }
+        .btn-ig { background: #e1306c; }
+
+        .btn-top:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* LOGO SECTION - E RREGULLUAR */
+        .logo-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: #2b1b17;
+            color: white;
+            border-bottom: 4px solid var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 100px; /* Madhësi e rregullt, jo ekstreme */
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+
+        .logo-section h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .logo-section h2 {
+            font-weight: 300;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 14px;
+        }
+
+        /* MAIN CONTAINER */
+        .categories-container {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            align-content: center;
+        }
+
+        /* CATEGORY CARD */
+        .category-card {
+            background: var(--card-bg);
+            height: 220px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .category-img-container {
+            width: 100%;
+            height: 150px;
+            background-color: #2b1b17;
+            overflow: hidden;
+        }
+
+        .category-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s ease;
+        }
+
+        .category-text {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background-color: var(--wood-dark);
+        }
+
+        .category-text span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-light);
+        }
+
+        .btn-pica { border-bottom: 5px solid #d61c1c; }
+        .btn-tosta { border-bottom: 5px solid #f77f00; }
+        .btn-francuski { border-bottom: 5px solid #28a745; }
+        .btn-pije { border-bottom: 5px solid #0a82ed; }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+            color: #888;
+            background-color: #2b1b17;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @media (max-width: 600px) {
+            .btn-top { font-size: 10px; padding: 10px 2px; }
+            .logo-section h1 { font-size: 26px; }
+            .categories-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="contact-buttons">
+            <a href="tel:+38970945985" class="btn-top btn-call">📞 Kontakt</a>
+            <a href="https://www.facebook.com/share/1JCn7MZuHd/?mibextid=wwXIfr" target="_blank" class="btn-top btn-fb">Facebook</a>
+            <a href="https://www.instagram.com/pizza_shkupi_jahjapasha?igsh=aTVzb3VhNWZqZDhy" target="_blank" class="btn-top btn-ig">Instagram</a>
+        </div>
+    </header>
+
+    <section class="logo-section">
+        <img src="logoja.jpg" class="logo" alt="Logo Pizza Shkupi">
+        <h1>PIZZA SHKUPI</h1>
+        <h2>Jahja Pashë</h2>
+    </section>
+
+    <div class="categories-container">
+        
+        <a href="pizza.html" class="category-card btn-pica">
+            <div class="category-img-container">
+                <img src="margarita.jpg" alt="Kategoria Picat">
+            </div>
+            <div class="category-text">
+                <span>Pica</span>
+            </div>
+        </a>
+
+        <a href="tostat.html" class="category-card btn-tosta">
+            <div class="category-img-container">
+                <img src="tostimix.jpg" alt="Kategoria Tostat">
+            </div>
+            <div class="category-text">
+                <span>Tosta</span>
+            </div>
+        </a>
+
+        <a href="francuski.html" class="category-card btn-francuski">
+            <div class="category-img-container">
+                <img src="francuskimix.jpg" alt="Kategoria Francuskit">
+            </div>
+            <div class="category-text">
+                <span>Francuski</span>
+            </div>
+        </a>
+
+        <a href="pijet.html" class="category-card btn-pije">
+            <div class="category-img-container">
+                <img src="sinalcocola.jpg" alt="Kategoria Pijet">
+            </div>
+            <div class="category-text">
+                <span>Pije</span>
+            </div>
+        </a>
+    </div>
+
+    <footer>
+        <p>Lagjia Jahja Pashë, Shkup &copy; 2026</p>
+    </footer>
+
+</body>
+</html>

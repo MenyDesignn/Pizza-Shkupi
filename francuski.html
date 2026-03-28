@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Shkupi - Jahja Pashë</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #d61c1c; 
+            --accent-color: #f77f00; 
+            --main-theme-color: #3e2723; 
+            --card-border: #4e342e;
+            --text-light: #ffffff;
+            --call-green: #28a745; /* Ngjyra e gjelbër për telefonatën */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--main-theme-color); 
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* HEADER I PËRMIRËSUAR */
+        .header {
+            position: sticky;
+            top: 0;
+            background: rgba(30, 20, 18, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 10px 8px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 8px;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .btn-top {
+            flex: 1; /* I mban butonat me madhësi të barabartë */
+            padding: 10px 5px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 11px; /* Madhësi ideale për iPhone dhe ekranet e tjerë */
+            font-weight: 700;
+            color: white;
+            transition: 0.3s;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+        }
+
+        .btn-call { background: var(--call-green); }
+        .btn-fb { background: #1877f2; }
+        .btn-ig { background: #e1306c; }
+
+        .btn-top:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* LOGO SECTION */
+        .logo-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: #2b1b17;
+            color: white;
+            border-bottom: 4px solid var(--accent-color);
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-color);
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .logo-section h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .logo-section h2 {
+            font-weight: 300;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 16px;
+        }
+
+        /* MENU GRID */
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* PIZZA CARD */
+        .pizza-card {
+            background: var(--main-theme-color); 
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--card-border);
+        }
+
+        .pizza-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+        }
+
+        .img-container {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .pizza-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .pizza-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .pizza-info {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pizza-info h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--text-light); 
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .price-tag {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .price-tag div {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .size-label {
+            display: block;
+            font-size: 11px;
+            color: #aaa;
+            text-transform: uppercase;
+        }
+
+        .amount {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 18px;
+        }
+
+        .order-now {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
+            gap: 8px;
+        }
+
+        .order-now:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* RESPONSIVE FIX FOR SMALLER SCREENS */
+        @media (max-width: 480px) {
+            .btn-top { font-size: 10px; padding: 10px 2px; }
+            .logo-section h1 { font-size: 32px; }
+            .menu { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="contact-buttons">
+        <a href="tel:+38970945985" class="btn-top btn-call">📞 Kontakti</a>
+        <a href="https://www.facebook.com/share/1JCn7MZuHd/?mibextid=wwXIfr" target="_blank" class="btn-top btn-fb">Facebook</a>
+        <a href="https://www.instagram.com/pizza_shkupi_jahjapasha?igsh=aTVzb3VhNWZqZDhy" target="_blank" class="btn-top btn-ig">Instagram</a>
+    </div>
+</header>
+
+<section class="logo-section">
+    <img src="logoja.jpg" class="logo" alt="Logo Pizza Shkupi">
+    <h1>FRANCUSKI</h1>
+</section>
+
+<section class="menu">
+
+    <div class="pizza-card">
+        <div class="img-container">
+            <img src="francuskisallam.jpg" alt="Tosti Sallamë">
+        </div>
+        <div class="pizza-info">
+            <h3>Me Sallamë</h3>
+            <div class="price-tag">
+                <div><span class="size-label"></span><span class="amount">90 den</span></div>
+            </div>
+            <a href="tel:+38970945985" class="order-now">🛒 Porosit Tani</a>
+        </div>
+    </div>
+
+    <div class="pizza-card">
+        <div class="img-container">
+            <img src="francuskisuxhuk.jpg" alt="Tosti Suxhuk">
+        </div>
+        <div class="pizza-info">
+            <h3>Me Suxhuk</h3>
+            <div class="price-tag">
+                <div><span class="size-label"></span><span class="amount">90 den</span></div>
+            </div>
+            <a href="tel:+38970945985" class="order-now">🛒 Porosit Tani</a>
+        </div>
+    </div>
+
+    <div class="pizza-card">
+        <div class="img-container">
+            <img src="francuskiproshut.jpg" alt="Tosti Proshutë">
+        </div>
+        <div class="pizza-info">
+            <h3>Me Proshutë</h3>
+            <div class="price-tag">
+                <div><span class="size-label"></span><span class="amount">100 den</span></div>
+            </div>
+            <a href="tel:+38970945985" class="order-now">🛒 Porosit Tani</a>
+        </div>
+    </div>
+
+    <div class="pizza-card">
+        <div class="img-container">
+            <img src="francuskimix.jpg" alt="Tosti Mix">
+        </div>
+        <div class="pizza-info">
+            <h3>Mix</h3>
+            <div class="price-tag">
+                <div><span class="size-label"></span><span class="amount">120 den</span></div>
+            </div>
+            <a href="tel:+38970945985" class="order-now">🛒 Porosit Tani</a>
+        </div>
+    </div>
+
+</section>
+
+<footer style="text-align: center; padding: 40px; color: #777; font-size: 14px;">
+    &copy; 2026 Pizza Shkupi - Të gjitha të drejtat e rezervuara.
+</footer>
+
+</body>
+</html>
